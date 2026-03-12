@@ -39,11 +39,11 @@ const Landing = () => {
     <div className='bg-[#F5F2ED]'>
         <div className='md:max-w-[1000px] xl:max-w-[1200px] mx-auto'>
             {/* Hero Section */}
-            <div className='flex flex-col md:flex-row px-[5rem] md:px-[7rem] py-[5rem] gap-[1rem] mx-auto'>
+            <div className='flex flex-col md:flex-row px-[2.5rem] sm:px-[5rem] md:px-[7rem] py-[2rem] sm:py-[5rem] gap-[1rem] mx-auto'>
                 {/* left container */}
                 <div className='md:w-1/2 flex flex-col gap-[2rem] pt-[2.5rem]'>
                     <div className='text-[2.5rem] md:text-[3rem] xl:text-[4.5rem] text-[#2D4739] font-semibold leading-[0.95] text-[#2D3A30] font-heading tracking-tight'>The digital common space for your campus.</div>
-                    <div className='text-[1.1rem] md:text-[1.3rem] xl:text-[2rem] leading-[1.1] text-[#3C2F2F]/60 font-body font-medium opacity-95'>Placements. Internships. Events. Discussions. All in one place.</div>
+                    <div className='text-[0.9rem] sm:text-[1.1rem] md:text-[1.3rem] xl:text-[2rem] leading-[1.1] text-[#3C2F2F]/60 font-body font-medium opacity-95'>Placements. Internships. Events. Discussions. All in one place.</div>
                 </div>
 
                 {/* right container */}
@@ -54,13 +54,13 @@ const Landing = () => {
             </div>
 
             {/* Value Section */}
-            <div className='px-[3rem] md:px-[5rem] lg:px-[7rem] flex flex-col gap-[4rem] sm:gap-[6rem] xl:gap-[8rem] mt-[4rem]' id='features'>
+            <div className='px-[2rem] sm:px-[3rem] md:px-[5rem] lg:px-[7rem] flex flex-col gap-[4rem] sm:gap-[6rem] xl:gap-[8rem] mt-[4rem]' id='features'>
                 {/* Card 1 */}
                 <div className='bg-white/70 backdrop-blur-sm rounded-[3rem] border border-white/40 flex flex-col lg:flex-row py-12 xl:py-20 px-8 xl:px-24 gap-12 xl:gap-20 shadow-xl overflow-hidden'>
                     {/* left */}
                     <div className='flex flex-col justify-center space-y-6 lg:w-1/2'>
                         <div className='text-[clamp(2rem,5vw,3.5rem)] font-bold font-heading leading-[1.1]'><span className='text-[#2D4739]'>Opportunities,</span> <br/> <span className='text-[#B75D32]'>All in One Place.</span></div>
-                        <div className='text-lg font-body max-w-md text-black/50'>Get updates on internships, drives, shortlists, and prep resources.</div>
+                        <div className='text-md sm:text-lg font-body max-w-md text-black/50'>Get updates on internships, drives, shortlists, and prep resources.</div>
                     </div>
 
                     {/* right */}
@@ -83,7 +83,7 @@ const Landing = () => {
                     {/* right */}
                     <div className='flex flex-col justify-center space-y-6 lg:w-1/2'>
                         <div className='text-[clamp(2rem,5vw,3.5rem)] font-bold font-heading leading-[1.1]'><span className='text-[#2D4739]'>Campus Buzz,</span> <br/> <span className='text-[#B75D32]'>All Here.</span></div>
-                        <div className='text-lg font-body max-w-md text-black/50'>Find fests, events, workshops, auditions, and everything worth showing up for.</div>
+                        <div className='text-md sm:text-lg font-body max-w-md text-black/50'>Find fests, events, workshops, auditions, and everything worth showing up for.</div>
                     </div>
                 </div>
 
@@ -92,7 +92,7 @@ const Landing = () => {
                     {/* left */}
                     <div className='flex flex-col justify-center space-y-6 lg:w-1/2'>
                         <div className='text-[clamp(2rem,5vw,3.5rem)] font-bold font-heading leading-[1.1]'><span className='text-[#2D4739]'>Got Something to</span> <br/> <span className='text-[#B75D32]'>Say?</span></div>
-                        <div className='text-lg font-body max-w-md text-black/50'>Drop your opinions, hot takes, secrets, or confessions.</div>
+                        <div className='text-md sm:text-lg font-body max-w-md text-black/50'>Drop your opinions, hot takes, secrets, or confessions.</div>
                     </div>
 
                     {/* right */}
@@ -113,7 +113,7 @@ const Landing = () => {
                 </div>
 
                 {/* bottom */}
-                <div className='w-full p-[2.7rem] rounded-[2rem] flex flex-col gap-[2rem]'>
+                <div className='w-full px-[1.5rem] py-[2.7rem] rounded-[2rem] flex flex-col gap-[2rem]'>
                     {/* 1. */}
                     <div className='bg-white/60 backdrop-blur-md rounded-[2.5rem] p-8 flex flex-col min-[520px]:flex-row gap-6 items-start border border-white/40 shadow-xl shadow-[#3C2F2F]/5 transition-all hover:translate-x-2'>
                         <div className='flex-shrink-0 h-16 w-16 bg-[#a88b7e] text-white rounded-2xl font-heading font-bold text-2xl flex justify-center items-center shadow-lg rotate-3 group-hover:rotate-0 transition-transform'>
@@ -168,7 +168,7 @@ const Landing = () => {
             <div className=' xl:max-w-[1000px] mx-auto mt-[6rem] xl:mt-[8rem] p-[2rem]' id='CTA'>
                 <div className='flex flex-col bg-gradient-to-br from-[#2D4739] via-[#2D4739] to-[#1a2b22] p-[3rem] lg:p-[5rem] rounded-[3rem] justify-center shadow-2xl'>
                     <div className='text-white text-[clamp(2.2rem,5vw,4.5rem)] font-bold font-heading leading-[1.1] tracking-tight'><span>Ready to Join</span> <br /> <span className='text-[#B75D32]'>your Courtyard?</span></div>
-                    <div className='mt-4 text-[#ffffffd3]/70 text-lg font-body font-medium max-w-md'>Your campus space is waiting.</div>
+                    <div className='mt-4 text-[#ffffffd3]/70 text-md sm:text-lg font-body font-medium max-w-md'>Your campus space is waiting.</div>
                     <button className='group hover:-translate-y-1 w-fit mt-[2rem] font-body shadow-xl rounded-xl md:rounded-3xl px-7 md:px-10 py-3 md:py-5 text-lg hover:shadow-[0_0_30px_rgba(183,93,50,0.4)] transition-all duration-300 bg-[#B75D32] text-[#FFFFFF] text-[0.9rem] md:text-[1rem] font-semibold' onClick={userData? ()=>{navigate('/feed')}: handleLogin}>
                         {userData? 
                         <div className='flex items-center'>

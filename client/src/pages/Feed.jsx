@@ -68,7 +68,7 @@ const Feed = () => {
         {/* Center feed area */}
         <div className='flex-1 xl:max-w-[600px] py-4 min-[450px]:py-8 space-y-6'>
           {/* Header - info and create post */}
-          <div className='sticky top-[24] z-10'>
+          <div className='sticky top-20 z-10'>
             <div className="block md:hidden mb-4 px-4 bg-white p-2 rounded-xl">
               <h1 className="text-xl font-heading text-[#B75D32] capitalize">
                 {!type ? 'Main Feed' : `${type} Courtyard`}
