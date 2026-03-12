@@ -215,7 +215,7 @@ const Landing = () => {
                     <div className='font-body text-lg font-bold text-[#3C2F2F]'>Connect</div>
                     <div className='md:text-right'>
                         <p className='text-sm opacity-60 font-body'>Questions or feedback?</p>
-                        <a href="mailto:hello@courtyard.app" className='text-base font-semibold text-[#B75D32] hover:underline'>hello@courtyard.app</a>
+                        <a href="mailto:sayanmajumdar.edu.3101@gmail.com" className='text-base font-semibold text-[#B75D32] hover:underline'>hello@courtyard.app</a>
                     </div>
                     <div className='flex gap-4 items-center'>
                         <a href='https://www.linkedin.com/in/sayan-majumdar31' className='opacity-60 hover:opacity-100 hover:-translate-y-1 transition-all'>
