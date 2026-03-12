@@ -6,7 +6,7 @@ import { UserContext } from '../context/UserContext';
 import NotificationDropdown from './NotificationDropdown';
 import {API, BASE_URL} from '../api'
 const Navbar = () => {
-  const { userData, setUserData } = useContext(UserContext);
+  const { userData, setUserData, loading } = useContext(UserContext);
   const [peek, setPeek] = useState(false);
 
   const [scrolled, setScrolled] = useState(false);
@@ -79,37 +79,42 @@ const Navbar = () => {
           </div>
         </a>
 
-        {userData?.username ? (
-          <div className='flex items-center gap-4'>
-            <div className='relative'>
-              <NavLink to={`/profile/${userData.username}`}>
-                <img 
-                  src={getProfilePic(userData?.profilePic)} 
-                  alt={userData.Name} 
-                  className='h-[1.8rem] w-[1.8rem] sm:h-[2.5rem] sm:w-[2.5rem] md:h-[3rem] md:w-[3rem] rounded-full cursor-pointer ring-2 ring-transparent hover:ring-[#B75D32]/30 transition-all'
-                  onMouseEnter={() => setPeek(true)} 
-                  onMouseLeave={() => setPeek(false)}
-                />
-                
-                <div className={`bg-white shadow-xl border border-gray-100 p-3 absolute right-0 top-12 rounded-xl z-50 min-w-[120px] ${peek ? "hidden md:block" : "hidden"}`}>
-                  <h2 className='font-heading text-[1rem] whitespace-nowrap'>{userData.Name}</h2>
-                  <p className='font-body text-[0.7rem] opacity-60'>@{userData.username}</p>
-                </div>
-              </NavLink>
+        {loading ? (
+            <div className="h-10 w-10 rounded-full bg-gray-200 animate-pulse" /> 
+          ) : (
+            userData ? (
+              <div className='flex items-center gap-4'>
+                <div className='relative'>
+                  <NavLink to={`/profile/${userData?.username}`}>
+                    <img 
+                      src={getProfilePic(userData?.profilePic)} 
+                      alt={userData?.Name} 
+                      className='h-[1.8rem] w-[1.8rem] sm:h-[2.5rem] sm:w-[2.5rem] md:h-[3rem] md:w-[3rem] rounded-full cursor-pointer ring-2 ring-transparent hover:ring-[#B75D32]/30 transition-all'
+                      onMouseEnter={() => setPeek(true)} 
+                      onMouseLeave={() => setPeek(false)}
+                      referrerPolicy="no-referrer" // Add this for Google Images!
+                    />
+                    
+                    <div className={`bg-white shadow-xl border border-gray-100 p-3 absolute right-0 top-12 rounded-xl z-50 min-w-[120px] ${peek ? "hidden md:block" : "hidden"}`}>
+                      <h2 className='font-heading text-[1rem] whitespace-nowrap'>{userData.Name}</h2>
+                      <p className='font-body text-[0.7rem] opacity-60'>@{userData.username}</p>
+                    </div>
+                  </NavLink>
 
-              <div className='absolute -top-2 -right-3 md:-top-3 md:-right-5 scale-90 md:scale-100'>
-                <NotificationDropdown 
-                  notifications={unreadNotifs} 
-                  unreadCount={unreadCount} 
-                />
+                  <div className='absolute -top-2 -right-3 md:-top-3 md:-right-5 scale-90 md:scale-100'>
+                    <NotificationDropdown 
+                      notifications={unreadNotifs} 
+                      unreadCount={unreadCount} 
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        ) : (
-          <button className='text-[1rem] md:text-[1.2rem] py-2 px-4 md:px-5 rounded-xl bg-[#B75D32] text-white font-body font-semibold hover:bg-[#a04e28] transition-all' onClick={handleLogin}>
-            Join
-          </button>
-        )}
+            ) : (
+              <button className='text-[1rem] md:text-[1.2rem] py-2 px-4 md:px-5 rounded-xl bg-[#B75D32] text-white font-body font-semibold hover:bg-[#a04e28] transition-all' onClick={handleLogin}>
+                Join
+              </button>
+            )
+          )}
       </div>
     </div>
   )
