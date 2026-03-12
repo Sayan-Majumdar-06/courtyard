@@ -1,9 +1,12 @@
 import { createContext, useState, useEffect } from 'react';
 import {API} from '../api'
+import { useLocation } from 'react-router-dom'; // Add this at the top
+
 export const UserContext = createContext();
 
 export const UserContextProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -17,7 +20,7 @@ export const UserContextProvider = ({ children }) => {
           return;
         }
 
-        const data = await res.json();
+        const data = res.data;
         setUserData(data);
       } catch(err) {
         console.error(err);
@@ -25,7 +28,7 @@ export const UserContextProvider = ({ children }) => {
     };
 
     fetchUserData();
-  }, []);
+  }, [location.pathname]);
 
   return (
     <UserContext.Provider value={{ userData, setUserData }}>
