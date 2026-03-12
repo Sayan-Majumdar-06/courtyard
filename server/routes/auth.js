@@ -7,12 +7,12 @@ router.get("/google",
 
 router.get("/google/callback",
     passport.authenticate("google", {
-        failureRedirect: `${process.env.FRONTEND_URL || "http://localhost:5173?error=invalid_email"}`,
+        failureRedirect: `${process.env.FRONTEND_URL+'?error=invalid_email' || "http://localhost:5173?error=invalid_email"}`,
         failureMessage: true
     }),
 
     (req, res) => {
-        res.redirect(`${process.env.FRONTEND_URL || "http://localhost:5173/feed"}`);
+        res.redirect(`${process.env.FRONTEND_URL+'/feed' || "http://localhost:5173/feed"}`);
     }
 );
 
