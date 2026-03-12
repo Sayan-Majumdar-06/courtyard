@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+/**
+* @license
+*
+* Font Family: Clash Display
+* Designed by: Indian Type Foundry
+* URL: https://www.fontshare.com/fonts/clash-display
+* © 2026 Indian Type Foundry
+*
+
+* Clash Display Variable (Variable font)
+*
+*/
+
+@font-face {
+  font-family: 'ClashDisplay-Variable';
+  src: url('./assets/fonts/ClashDisplay-Variable.woff2') format('woff2'),
+       url('./assets/fonts/ClashDisplay-Variable.woff') format('woff'),
+       url('./assets/fonts/ClashDisplay-Variable.ttf') format('truetype');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@utility font-heading {
+    font-family: 'ClashDisplay-Variable', sans-serif;
+}
+
+@utility font-body {
+    font-family: 'Inter', sans-serif;
+}
