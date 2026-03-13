@@ -120,17 +120,14 @@ Courtyard follows a typical full-stack architecture:
 
 ## Screenshots
 
-### Home Feed
-![Feed Screenshot]
+- Home Feed
+<img width="1900" height="907" alt="Image" src="https://github.com/user-attachments/assets/8d90ebb6-5640-428e-bf1e-0cc707d6e669" />
+
+- Create Post
 <img width="1898" height="909" alt="Image" src="https://github.com/user-attachments/assets/80054ad6-2fb4-4f8c-9928-2364e7527208" />
 
-### Create Post
-![Create Post Screenshot]
+- Profile Page
 <img width="1898" height="905" alt="Image" src="https://github.com/user-attachments/assets/6150d5e8-7f3d-4342-b749-9a4a40983c79" />
-
-### Profile Page
-![Profile Screenshot]
-<img width="2" height="1" alt="Image" src="https://github.com/user-attachments/assets/44a805d6-6090-4597-adc3-ad064714f773" />
 
 ---
 
