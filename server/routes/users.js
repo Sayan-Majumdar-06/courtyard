@@ -35,6 +35,18 @@ router.put("/mark-notifications-read", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get('/search', async (req, res) => {
+    const {q} = req.query;
+    try {
+        const users = await User.find({
+        username: { $regex: q, $options: 'i'}}).limit(5).select('username profilePic college');
+
+        res.json(users);
+    } catch(err) {
+        res.status(500).json({message: 'search failed'});
+    }
+})
 router.put("/:id", upload.single('profilePic'), async (req, res) => {
 
     try {
@@ -200,5 +212,6 @@ router.get('/check-username/:username', async (req, res) => {
     const user = await User.findOne({ username: req.params.username.toString() });
     res.json({ isAvailable: !user });
 })
+
 
 module.exports = router;

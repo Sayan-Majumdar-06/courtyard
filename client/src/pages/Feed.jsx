@@ -9,6 +9,7 @@ import { UserContext } from '../context/UserContext';
 import {API, BASE_URL} from '../api'
 import { NavLink } from 'react-router'
 import Bottombar from '../components/Bottombar'
+import createBtn from '../assets/create-btn.svg'
 const Feed = () => {
   const { userData } = useContext(UserContext);
   const { setUserData } = useContext(UserContext);
@@ -68,27 +69,34 @@ const Feed = () => {
         {/* Center feed area */}
         <div className='flex-1 xl:max-w-[600px] py-4 min-[450px]:py-8 space-y-6'>
           {/* Header - info and create post */}
-          <div className='w-full bg-[#f3f1e9] sticky top-16 z-10 rounded-3xl'>
-            <div className="block md:hidden mb-2 px-4 bg-white p-2 rounded-xl">
-              <h1 className="text-xl font-heading text-[#B75D32] capitalize">
-                {!type ? 'Main Feed' : `${type} Courtyard`}
-              </h1>
-              <p className="text-xs text-gray-500 font-body">
-                {!type 
-                  ? 'Exploring everything happening right now.' 
-                  : `Viewing the latest posts in the ${type} category.`}
-              </p>
-            </div>
+          <div className='sticky top-16 sm:top-20 z-10 bg-[#ebe6de] w-full pt-2 pb-4'>
+            <div className='w-full bg-[#f3f1e9] rounded-3xl'>
+              <div className="flex justify-between sm:block md:hidden sm:mb-2 px-4 bg-white p-2 rounded-xl">
+                <div>
+                  <h1 className="text-[1rem] font-heading text-[#B75D32] capitalize">
+                    {!type ? 'Main Feed' : `${type} Courtyard`}
+                  </h1>
+                  <p className="text-[0.6rem] text-gray-500 font-body">
+                    {!type 
+                      ? 'Exploring everything happening right now.' 
+                      : `Viewing the latest posts in the ${type} category.`}
+                  </p>
+                </div>
 
-            <div className='backdrop-blur-md bg-white/60 px-4 py-2 rounded-3xl  shadow-sm border border-white/20'>
-              <div onClick={()=>setIsOpen(true)} className='border-2 border-[#A88B7E]/40 hover:border-[#A88B7E]/70 flex gap-[1rem] items-center bg-white px-[0.3rem] sm:px-[0.5rem] py-[0.2rem] sm:py-[0.4rem] rounded-full cursor-text'>
-                <img src={getProfilePic(userData?.profilePic)} alt="avatar" className='w-[1.5rem] h-[1.5rem] min-[450px]:w-[2rem] min-[450px]:h-[2rem] sm:w-[2.5rem] sm:h-[2.5rem] rounded-full' />
-                <div className='font-body font-semibold opacity-40 text-[0.7rem] min-[450px]:text-[0.9rem]'>What's on your mind, {userData?.username?.split(' ')[0]}?</div>
+                <div className='block sm:hidden bg-[#B75D32] px-2 py-2 rounded-3xl shadow-sm border border-white/20' onClick={()=>setIsOpen(true)}>
+                  <img src={createBtn} alt="+"/>
+                </div>
+              </div>
+
+              <div className='hidden sm:block backdrop-blur-md bg-white/60 px-4 py-2 rounded-3xl  shadow-sm border border-white/20'>
+                <div onClick={()=>setIsOpen(true)} className='border-2 border-[#A88B7E]/40 hover:border-[#A88B7E]/70 flex gap-[1rem] items-center bg-white px-[0.3rem] sm:px-[0.5rem] py-[0.2rem] sm:py-[0.4rem] rounded-full cursor-text'>
+                  <img src={getProfilePic(userData?.profilePic)} alt="avatar" className='w-[1.5rem] h-[1.5rem] min-[450px]:w-[2rem] min-[450px]:h-[2rem] sm:w-[2.5rem] sm:h-[2.5rem] rounded-full' />
+                  <div className='font-body font-semibold opacity-40 text-[0.7rem] min-[450px]:text-[0.9rem]'>What's on your mind, {userData?.username?.split(' ')[0]}?</div>
+                </div>
               </div>
             </div>
           </div>
           
-
           {/* Feed posts */}
           <div className='space-y-4'>
             {
