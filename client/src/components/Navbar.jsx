@@ -114,7 +114,7 @@ const Navbar = () => {
   }
  
   return (
-    <div className={`w-full sticky top-0 z-20 transition-all duration-300 ${scrolled ? "bg-transparent p-2" : "bg-white p-2 sm:p-4 lg:p-[0.7rem]"}`}>
+    <div className={`w-full sticky top-0 z-20 transition-all duration-300 ${scrolled && !showSearch ? "bg-transparent p-2" : "bg-white p-2 sm:p-4 lg:p-[0.7rem]"}`}>
       
       <div className={`mx-auto transition-all duration-300 flex justify-between gap-4 items-center 
         ${scrolled ? "w-[95%] md:w-[90%]" : "w-[95%] lg:w-[73%]"}`}>
@@ -129,7 +129,7 @@ const Navbar = () => {
         {
           showSearch && 
           <div ref={searchRef} className='flex-1 max-w-[500px] relative z-20'>
-            <input value={query} className=' w-full border-2 border-[#B4732A]/20 hover:border-[#B4732A]/70 bg-[#3C2F2F]/10 focus:ring ring-[#B4732A] rounded-full font-semibold px-5 py-2 sm:py-3 text-[0.8rem] sm:text-[0.95rem] outline-none focus:bg-white transition-all' placeholder='🔍 Search' onChange={(e) => setQuery(e.target.value)}/>
+            <input value={query} className='w-full border-2 border-[#B4732A]/20 hover:border-[#B4732A]/70 bg-[#3C2F2F]/10 focus:ring ring-[#B4732A] rounded-full font-semibold px-5 py-2 sm:py-3 text-[0.8rem] sm:text-[0.95rem] outline-none focus:bg-white transition-all' placeholder='🔍 Search' onChange={(e) => setQuery(e.target.value)}/>
 
             {/* suggestion dropdown */}
             {query?.length > 0 && (
