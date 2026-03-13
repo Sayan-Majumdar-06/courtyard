@@ -31,22 +31,22 @@ Only users with valid institutional email IDs can access their campus space. Wit
 
 ## Key Features
 
-- **College Email Verification**  
+### **College Email Verification**  
 Users must sign up using their institutional email ID, ensuring that only verified students can access the platform.
 
-- **Campus-Restricted Communities**  
+### **Campus-Restricted Communities**  
 Discussions and posts are filtered based on the user's college, creating a private campus environment.
 
-- **Reddit-style Communities**  
+### **Reddit-style Communities**  
 Users can interact through posts and comment threads within different communities.
 
-- **Category-Based Feed Filtering**  
+### **Category-Based Feed Filtering**  
 The main feed is organized using categories to improve content discovery.
 
-- **Post Creation and Discussion Threads**  
+### **Post Creation and Discussion Threads**  
 Students can create posts and engage in threaded discussions.
 
-- **Post Interactions**
+### **Post Interactions**
 Users can interact with posts through:
 - Likes
 - Comments
@@ -54,10 +54,10 @@ Users can interact with posts through:
 - Share posts
 - likes and comment notifications  
 
-- **Follow System**
+### **Follow System**
 Users can **follow other users** and view content from people they are interested in.
 
-- **Profile Management**
+### **Profile Management**
 Each user has a customizable profile where they can:
 - Update username
 - Change branch/department
@@ -66,7 +66,7 @@ Each user has a customizable profile where they can:
   
 Users can only edit **their own profile**, ensuring proper access control.
 
-- **Authentication and Protected Routes**  
+### **Authentication and Protected Routes**  
 Secure authentication system ensuring only logged-in users can access the platform.
 
 ---
