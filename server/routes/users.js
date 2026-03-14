@@ -135,6 +135,17 @@ router.put("/:id/follow", async(req, res) => {
         } else {
             currentUserDoc.Following.push(id);
             userToFollow.Followers.push(currentUser);
+
+            
+            userToFollow.notifications.push({
+                senderName: currentUser ? currentUser : "Someone",
+                type: "followed",
+                read: false
+            });
+                
+            if (userToFollow.notifications.length > 20) {
+                userToFollow.notifications.shift(); 
+            }
         }
 
         await currentUserDoc.save();

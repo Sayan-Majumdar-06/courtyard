@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import notifIcon from '../assets/notif-icon.svg'
 import {API} from '../api'
+import { useNavigate } from 'react-router';
 const NotificationDropdown = ({ notifications, unreadCount }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -59,9 +61,10 @@ const NotificationDropdown = ({ notifications, unreadCount }) => {
                 <div 
                   key={index} 
                   className={`p-3 border-b border-gray-50 hover:bg-blue-50 cursor-pointer transition-colors ${!notif.read ? 'bg-blue-50/30' : ''}`}
+                  onClick={notif.type !== 'followed' && notif.postId ? ()=>navigate(`/posts/${notif.postId}`) : ()=>{}}
                 >
                   <p className="text-sm text-gray-800">
-                    <span className="font-bold">{notif.senderName}</span> {notif.type} your post.
+                    <span className="font-bold">{notif.senderName}</span> {notif.type} {notif.type==='followed'?'you':notif.type==='commented'?'on your post': 'your post'}.
                   </p>
                   <span className="text-[10px] text-gray-400">
                     {new Date(notif.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
