@@ -61,7 +61,7 @@ const NotificationDropdown = ({ notifications, unreadCount }) => {
                 <div 
                   key={index} 
                   className={`p-3 border-b border-gray-50 hover:bg-blue-50 cursor-pointer transition-colors ${!notif.read ? 'bg-blue-50/30' : ''}`}
-                  onClick={notif.type !== 'followed' && notif.postId ? ()=>navigate(`/posts/${notif.postId}`) : ()=>{}}
+                  onClick={notif.type !== 'followed' && notif.postId ? ()=>navigate(`/post/${notif.postId}`) : ()=>{}}
                 >
                   <p className="text-sm text-gray-800">
                     <span className="font-bold">{notif.senderName}</span> {notif.type} {notif.type==='followed'?'you':notif.type==='commented'?'on your post': 'your post'}.
