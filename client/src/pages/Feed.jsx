@@ -139,7 +139,7 @@ const Feed = () => {
         </aside>
       </div>
       
-      <div className='fixed bottom-6 left-0 right-0 z-50 w-full min-[450px]:hidden'>
+      <div className='fixed bottom-6 left-0 right-0 z-40 w-full min-[450px]:hidden'>
         <div className='mx-auto mb-4 w-fit border-2 border-white/70 bg-white/80 backdrop-blur-md rounded-2xl shadow-lg'>
           <Bottombar />
         </div>

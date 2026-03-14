@@ -85,8 +85,8 @@ const PostCard = (props) => {
             <div className='flex justify-between'>
                 <div className='flex gap-2 items-center flex-wrap'>
                     <span className='flex gap-[0.5rem] items-center w-fit' onClick={(e)=>e.stopPropagation()}>
-                        <img src={!props.post.anonymous?getProfilePic(props.post.userId?.profilePic):getProfilePic(undefined)} alt="avatar-img" className='h-[1.2rem] w-[1.2rem] md:h-[2rem] md:w-[2rem] rounded-full cursor-pointer' onClick={()=>navigate(`/profile/${props.post.userId?.username}`)} />
-                        <div className='text-[0.7rem] min-[450px]:text-[0.9rem] md:text-[1rem] opacity-85 font-semibold cursor-pointer' onClick={()=>navigate(`/profile/${props.post.userId?.username}`)}>{props.post.anonymous ? "Anonymous" : props.post.userId?.username || 'Deleted User'}</div>
+                        <img src={!props.post.anonymous?getProfilePic(props.post.userId?.profilePic):getProfilePic(undefined)} alt="avatar-img" className='h-[1.2rem] w-[1.2rem] md:h-[2rem] md:w-[2rem] rounded-full cursor-pointer' onClick={!props.post.anonymous?()=>navigate(`/profile/${props.post.userId?.username}`) : ()=>{}} />
+                        <div className='text-[0.7rem] min-[450px]:text-[0.9rem] md:text-[1rem] opacity-85 font-semibold cursor-pointer' onClick={!props.post.anonymous?()=>navigate(`/profile/${props.post.userId?.username}`) : ()=>{}}>{props.post.anonymous ? "Anonymous" : props.post.userId?.username || 'Deleted User'}</div>
                     </span>
 
                     <span className='opacity-60 text-[0.55rem] min-[450px]:text-[0.7rem] md:text-[0.9rem]'>
