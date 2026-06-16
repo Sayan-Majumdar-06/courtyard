@@ -5,7 +5,6 @@ require("dotenv").config();
 
 const supportedColleges = {
     'nitdgp.ac.in': 'NIT Durgapur',
-    'iitkgp.ac.in': 'IIT Kharagpur',
     'ju.edu.in': 'Jadavpur University',
     'bits-pilani.ac.in': 'BITS Pilani',
     'iiit.ac.in': 'IIIT Hyderabad',
@@ -16,6 +15,7 @@ const supportedColleges = {
     // --- All IITs ---
     'iitb.ac.in': 'IIT Bombay',
     'iitd.ac.in': 'IIT Delhi',
+    'iitkgp.ac.in': 'IIT Kharagpur',
     'iitk.ac.in': 'IIT Kanpur',
     'iitm.ac.in': 'IIT Madras',
     'iitr.ac.in': 'IIT Roorkee',
@@ -31,12 +31,11 @@ const supportedColleges = {
     'iitgoa.ac.in': 'IIT Goa',
     'iitbhilai.ac.in': 'IIT Bhilai',
     'iitdh.ac.in': 'IIT Dharwad',
-    'iitp.ac.in': 'IIT Patna',
-    'iitbbs.ac.in': 'IIT Bhubaneswar',
     'iitrpr.ac.in': 'IIT Ropar',
     'iitdm.ac.in': 'IITDM Kurnool',
     'iitbhu.ac.in': 'IIT (BHU) Varanasi',
     'iitism.ac.in': 'IIT (ISM) Dhanbad',
+    'iitmandi.ac.in': 'IIT Mandi',
 
     // --- All NITs ---
     'nitc.ac.in': 'NIT Calicut',
@@ -77,13 +76,14 @@ passport.use(
         clientID: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
         callbackURL: "/auth/google/callback",
-        proxy: true
+        proxy: true,
+        prompt: 'select_account'
     },
     
     async (asyncToken, refreshToken, profile, done) => {
         try {
             const email = profile.emails[0].value;
-            const ADMIN = 'sayanmajumdar.edu.3101@gmail.com';
+            const ADMIN = process.env.ADMIN_EMAIL_ID;
             const domain = email.split('@')[1];
 
             const collegeName = supportedColleges[domain];
@@ -96,11 +96,15 @@ passport.use(
 
             if(!user) {
                 let baseUsername = profile.displayName.replace(/\s+/g, '').toLowerCase();
+                let existingUser = await User.findOne({ username: baseUsername });
+                let newUsername = baseUsername;
 
-                const existingUser = await User.findOne({ username: baseUsername });
-                const finalUsername = existingUser 
-                    ? `${baseUsername}${Math.floor(Math.random() * 1000)}` 
-                    : baseUsername;
+                while (existingUser) {
+                    newUsername = `${baseUsername}${Math.floor(Math.random() * 1000)}`;
+                    existingUser = await User.findOne({ username: newUsername });
+                }
+
+                const finalUsername = newUsername;
 
                 user = await User.create({
                     googleId: profile.id,
@@ -124,6 +128,10 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (id, done) => {
-    const user = await User.findById(id);
-    done(null, user);
+    try {
+        const user = await User.findById(id);
+        done(null, user);
+    } catch(err) {
+        done(err, null);
+    }
 });
