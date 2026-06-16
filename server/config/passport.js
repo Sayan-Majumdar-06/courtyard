@@ -11,6 +11,9 @@ const supportedColleges = {
     'iiitd.ac.in': 'IIIT Delhi',
     'dtu.ac.in': 'Delhi Technological University',
     'nsut.ac.in': 'NSUT Delhi',
+    'marwadiuniversity.ac.in': 'Marwadi University',
+    'jisuniversity.ac.in': 'JIS University',
+    'mituniversity.edu.in': 'MIT ADT',
 
     // --- All IITs ---
     'iitb.ac.in': 'IIT Bombay',
