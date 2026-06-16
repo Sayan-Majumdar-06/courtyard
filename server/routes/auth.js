@@ -2,13 +2,16 @@ const router = require("express").Router();
 const passport = require("passport");
 
 router.get("/google",
-    passport.authenticate("google", { scope:["profile", "email"] })
+    passport.authenticate("google", { 
+        scope:["profile", "email"],
+        prompt: 'select_account'
+    })
 );
 
 router.get("/google/callback",
     passport.authenticate("google", {
         failureRedirect: `${process.env.FRONTEND_URL+'?error=invalid_email' || "http://localhost:5173?error=invalid_email"}`,
-        failureMessage: true
+        failureMessage: true,
     }),
 
     (req, res) => {
