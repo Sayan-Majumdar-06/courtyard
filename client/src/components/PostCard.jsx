@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useNavigate } from "react-router"
 import Linkify from 'linkify-react'
 import like from '../assets/like.svg'
@@ -18,6 +18,17 @@ const PostCard = (props) => {
     });
 
     const [showMore, setShowMore] = useState(false);
+    const reportRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (reportRef.current && !reportRef.current.contains(event.target)) {
+            setShowMore(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
 
     const handleLike = async () => {
         const res = await API.put(`/api/posts/${props.post._id}/like`,
@@ -98,14 +109,14 @@ const PostCard = (props) => {
                     </span>
                 </div>
 
-                <div onClick={(e)=>e.stopPropagation()} className='cursor-pointer'>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 relative" onClick={()=>setShowMore(true)}>
+                <div onClick={(e)=>{e.stopPropagation(); setShowMore(!showMore);}} ref={reportRef} className='cursor-pointer relative'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6" onClick={()=>setShowMore(true)}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/>
                     </svg>
 
-                    <div className={`bg-white p-[1rem] absolute -top-[0.6rem] -right-[3rem] rounded-xl cursor-pointer ${showMore ? "block" : "hidden"}`} onMouseLeave={()=>setShowMore(false)} onClick={handleReport}>
+                    {showMore && <div className='absolute bottom-full right-0 mb-2 w-48 bg-gray-800 text-white text-[10px] p-2 rounded-lg shadow-xl animate-in fade-in slide-in-from-bottom-1 cursor-pointer' onClick={handleReport}>
                         Report
-                    </div>
+                    </div>}
                 </div>
 
             </div>
@@ -127,7 +138,7 @@ const PostCard = (props) => {
                 <div className='flex gap-[2rem] items-center cursor-pointer' onClick={(e)=>e.stopPropagation()}>
                     {/* upvote */}
                     <div className='flex gap-2 items-center' onClick={handleLike}>
-                        <img src={isLiked?like:unlike} alt="like" className='h-4 w-4 min-[450px]:h-6 min-[450px]:w-6 md:h-8 md:w-8 cursor-pointer transition-transform duration-150 hover:scale-105' />
+                        <img src={isLiked?like:unlike} alt="like" className='h-6 w-6 md:h-8 md:w-8 cursor-pointer transition-transform duration-150 hover:scale-105' />
                         <div className='text-[0.7rem] min-[450px]:text-[0.8rem] md:text-[0.9rem] font-body font-bold'>{props.post.likes.length}</div>
                     </div>
                 </div>
