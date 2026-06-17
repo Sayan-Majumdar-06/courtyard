@@ -29,13 +29,14 @@ const CreatePostModal = (props) => {
         if(imageFile) newPost.append("image", imageFile);
 
         try {
-            const res = await API.post(`/api/posts`, newPost);
+            const res = await API.post(`/api/posts`, newPost, { timeout: 10000 });
             
             const savedPost = res.data;
             props.onPostCreated(savedPost);
             props.onClose();
         } catch(err) {
             console.log(err);
+            alert("Something went wrong. Please try again.");
         } finally {
             setLoading(false);
         }
