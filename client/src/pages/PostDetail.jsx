@@ -47,7 +47,7 @@ const PostDetail = () => {
                 
                 {/* Back Button: Moved to the left "gutter" */}
                 <button 
-                    onClick={() => navigate(-1)} 
+                    onClick={() => (window.history.length > 1) ? navigate(-1) : navigate('/feed')} 
                     className='hidden lg:flex items-center justify-center p-3 bg-white rounded-2xl shadow-sm hover:shadow-md transition-all absolute -left-20 top-8'
                     title="Go Back"
                 >
