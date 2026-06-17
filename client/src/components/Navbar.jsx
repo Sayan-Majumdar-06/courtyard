@@ -6,6 +6,7 @@ import { UserContext } from '../context/UserContext';
 import NotificationDropdown from './NotificationDropdown';
 import {API, BASE_URL} from '../api'
 import { useLocation } from 'react-router';
+import Swal from 'sweetalert2';
 const Navbar = () => {
   const location = useLocation();
   const showSearch = 
@@ -74,7 +75,20 @@ const Navbar = () => {
   }, [])
   
   const handleLogin = () => {
-    window.location.href = `${BASE_URL}/auth/google`;
+    Swal.fire({
+      title: 'Before you log in...',
+      html: `
+        <p>This is a student-only space, so you'll need a college email ID to join.</p>
+        <br/>
+        <p>Courtyard is completely open-source and it doesn't collect anything beyond your name and email.</p>
+      `,
+      icon: 'info',
+      confirmButtonText: 'Proceed',
+      confirmButtonColor: '#B75D32',
+      showCancelButton: true
+    }).then((result) => {
+      if (result.isConfirmed) window.location.href = `${BASE_URL}/auth/google`;
+    });
   }
 
   useEffect(() => {
